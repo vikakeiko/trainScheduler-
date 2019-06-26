@@ -11,20 +11,18 @@ const firebaseConfig = {
 
   firebase.initializeApp(firebaseConfig);
 
-   // Create a variable to reference the database
   var database = firebase.database();
-
+console.log("hi")
 
 // Button for adding trains
-$("#add-trains-btn").on("click", function(event){
+$("#go").on("click", function(event){
     event.preventDefault();
 
     // Grabs user input 
-    var trainName = $("train-name-input").val().trim();
-    var trainDest = $("destination-input").val().trim();
-    var trainFreq = $("frequesncy-input").val().trim();
-    var trainArr = moment($("arrival-input").val().trim(), "MM/DD/YYYY").format("X");
-    var trainAway = $("train-away-input").val().trim();
+    var trainName = $("#train-name-input").val().trim();
+    var trainDest = $("#destination-input").val().trim();
+    var trainFreq = $("#frequesncy-input").val().trim();
+    var trainArr = moment($("#first-arrival-input").val().trim(), "MM/DD/YYYY").format("X");
 
     // creates local "temporary" object for holding employee data
     var newTrain = {
@@ -32,7 +30,6 @@ $("#add-trains-btn").on("click", function(event){
         destination: trainDest,
         frequesncy: trainFreq,
         arrival: trainArr,
-        away: trainAway
     };
 
     // Uploads trains data to the database
@@ -42,7 +39,30 @@ $("#add-trains-btn").on("click", function(event){
     console.log(newTrain.destination);
     console.log(newTrain.frequesncy);
     console.log(newTrain.arrival);
-    console.log(newTrain.away);
+
+    // log from DB
+    database.ref().on("value", function(snapshot) {
+
+        // Then we console.log the value of snapshot
+        console.log(snapshot.val());
+  
+        // // Update the clickCounter variable with data from the database.
+        // newTrain = snapshot.val().newTrain;
+  
+        // // Then we change the html associated with the number.
+        // $("#click-value").text(snapshot.val().clickCount);
+  
+        // If there is an error that Firebase runs into -- it will be stored in the "errorObject"
+        // Again we could have named errorObject anything we wanted.
+      })
+
+    alert("Train schedule successfully added");
+
+    // clears all of the text-boxes 
+    $("#train-name-input").empty();
+    $("#destination-input").empty();
+    $("#frequesncy-input").empty();
+    $("#first-arrival-input").empty();
 
 
 

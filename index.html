@@ -9,26 +9,25 @@
 </head>
 
 <body>
-    <body>
-        <div class="container">
+    <div class="container">
 
-            <div id="header">
-                <h2>Anytime is Train Time</h2>
-                <h4>Choo Choo Chee Chee</h4>
-            </div>
-
-            <div id="current">
-                <form action="">
-                    <lable class="title">Current Train Schedule</lable>
-                    <table id="newRow">
-                        <tr>
-                            <th>Train Name</th> 
-                            <th>Destination</th>
-                            <th>Frequency (min)</th>
-                            <th>Next Arrival</th>
-                            <th>Minutes Away</th>
-                        </tr>
-                        <!-- <tr>
+        <div id="header">
+            <h2>Anytime is Train Time</h2>
+            <h4>Choo Choo Chee Chee</h4>
+        </div>
+        <!-- DISPLAY RESULT -->
+        <div id="current">
+            <form action="">
+                <lable class="title">Current Train Schedule</lable>
+                <table id="newRow">
+                    <tr>
+                        <th>Train Name</th>
+                        <th>Destination</th>
+                        <th>Frequency (min)</th>
+                        <th>Next Arrival</th>
+                        <th>Minutes Away</th>
+                    </tr>
+                    <!-- <tr>
                             <td>sss</td>
                             <td>sss</td>
                             <td>sss</td>
@@ -36,35 +35,38 @@
                             <td>sss</td>
                             <td>sdd</td>
                         </tr> -->
-                    </table>
-                </form>
-            </div>
-
-            <div id="content">
-                <div id="special">Add Train</div>
-                <form action="">
-                    <lable class="title">Train Name:</lable>
-                    <input class="box" type="text" id="name">
-                
-                    <lable class="title">Destination</lable>
-                    <input class="box" type="text" id ="role">
-                
-                    <lable class="title">Frist Train Time (HH:mm military time)</lable>
-                    <input class="box" type="text" id= "start">
-                
-                    <lable class="title">Frequency (min)</lable>
-                    <input class="box" type="text" id ="salary">
-                </form>
-                <button class="btn" id="go">Submit</button>
-            
-            </div>
+                </table>
+            </form>
         </div>
+        <!-- USER INPUT -->
+        <div id="content">
+            <div id="special">Add Train</div>
+            <form action="">
+                <lable class="title">Train Name:</lable>
+                <input class="box" type="text" id="train-name-input">
+
+                <lable class="title">Destination</lable>
+                <input class="box" type="text" id="destination-input">
+
+                <lable class="title">Frist Train Time (HH:mm military time)</lable>
+                <input class="box" type="text" id="first-arrival-input">
+
+                <lable class="title">Frequency (min)</lable>
+                <input class="box" type="text" id="frequesncy-input">
+            </form>
+            <button class="btn" id="go">Submit</button>
+
+        </div>
+    </div>
 
 
     <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
     <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-firestore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.2/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="index.js"></script>
 </body>
 
