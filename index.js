@@ -22,9 +22,9 @@ $("#go").on("click", function (event) {
     var trainName = $("#train-name-input").val().trim();
     var trainDest = $("#destination-input").val().trim();
     var trainFreq = $("#frequesncy-input").val().trim();
-    var arrTime = moment($("#first-arrival-input").val().trim(), "HH:mm").format("X");
-//  console.log(arrTime)
-     // creates local "temporary" object for holding employee data
+    var arrTime = $("#first-arrival-input").val().trim();
+    
+    // creates local "temporary" object for holding employee data
     var newTrain = {
         name: trainName,
         dest: trainDest,
@@ -39,10 +39,6 @@ $("#go").on("click", function (event) {
     // console.log(newTrain.dest);
     // console.log(newTrain.freq);
     // console.log(newTrain.arri);
-
-
-    
-
 
 
     // alert("Train schedule successfully added");
@@ -60,13 +56,13 @@ database.ref().on("child_added", function (childSnapshot) {
     console.log(childSnapshot.val()); // object containing the data from the recently added information
     var tInfo = childSnapshot.val();
 
-        // store everything into a variable 
+    // store everything into a variable 
     var trainName = tInfo.name;
     var trainDest = tInfo.dest;
     var trainFreq = tInfo.freq;
     var arrTime = tInfo.arri;
 
-        // trains info 
+    // trains info 
     console.log(trainName);
     console.log(trainDest);
     console.log(trainFreq);
@@ -74,18 +70,39 @@ database.ref().on("child_added", function (childSnapshot) {
 
 
     //  var tFreq = 3;
+    var nowTime = new Date();
+    //  min as current time in min.
+    var min = nowTime.getHours() * 60 + nowTime.getMinutes();
+    
+
+    //  min0 starting time of the train
+    var arrayTime = tInfo.arri.split(":");
+
+    // arrayTime["00", "00"]
+    var min0 = parseInt(arrayTime[0]) * 60 + parseInt(arrayTime[1]);
+
+    if (min < min0) {
+        min = min + 24 * 60;
+    }
+
+    // difference bewteen min min0  =>  nextTrain in min.
+    var nextTrain = tInfo.freq - ((min - min0) % tInfo.freq);
+
+    // min + nextTime  makes suer not greater than 24*60
+    var nextTime = min + nextTrain;
+    if (nextTime > 24 * 60) {
+        nextTime -= 24 * 60;
+    }
 
 
 
-    // var minFromStart = (( nowHours - startHours) % 24)*60 + (nowMin - startMin) % 60;
-    //    var minToNext = minFromStart % tFreq
-       
-    // //    math 
-    //    if (minToNext > 24*60) {
-    //        minToNext -= 24*60;
-    //    }
 
- 
+    // // my logic
+    // var minFromStart = ((nowHours - startHours) % 24) * 60 + (nowMin - startMin) % 60;
+    // console.log("currentTime: " + moment(mitFromStart).format("hh:mm"));
+
+
+    // var minToNext = minFromStart % tFreq
 
 
     /* ( test )
@@ -105,19 +122,20 @@ database.ref().on("child_added", function (childSnapshot) {
 
 
 
-
+    console.log(tInfo.arri);
 
     // Create the new row
     var newRow = $("<tr>").append(
-    $("<td>").text(tInfo.name),
-    $("<td>").text(tInfo.dest),
-    $("<td>").text(tInfo.freq),
-    $("<td>").text(tInfo.arri),
-    // $("<td>").text(remainderT)
+        $("<td>").text(tInfo.name),
+        $("<td>").text(tInfo.dest),
+        $("<td>").text(tInfo.freq),
+        $("<td>").text(parseInt(nextTime / 60).toString().padStart(2, "0") + ":" +
+            (nextTime % 60).toString().padStart(2, "0")),
+           
+        $("<td>").text(nextTrain)
     );
 
     // append the new row to the table 
-    $("#train-table > tbody").append(newRow);
-
+    $("#display").append(newRow);
 })
 

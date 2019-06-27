@@ -1,5 +1,6 @@
   //  min as current time in min.
   var min = nowTime.getHours()*60 + nowTime.getMinutes();
+  var nowTime = new Date();
 
   //  min0 starting time of the train
   var arrayTime = info.firstTime.split(":");
@@ -18,6 +19,7 @@
       nextTime -= 24*60;
   }
 
+  parseInt(nextTime/60)+ ":" + parseInt(n)
 
 
   // -------------
