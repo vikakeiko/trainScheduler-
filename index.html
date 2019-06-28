@@ -6,17 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="index.css">  
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,700&display=swap" rel="stylesheet">  
 </head>
 
 <body>
     <div class="container">
 
         <div id="header">
-            <h2>Anytime is Train Time</h2>
+            <h2><i class="fas fa-facebook"></i>Anytime is Train Time</h2>
             <h4>Choo Choo Chee Chee</h4>
         </div>
         <!-- DISPLAY RESULT -->
-        <div id="current">
+        <div id="result">
             <form action="">
                 <lable class="title">Current Train Schedule</lable>
                 <table id="newRow">
@@ -28,27 +30,73 @@
                         <th>Minutes Away</th>
                     </tr>
                     <tbody id="display"></tbody>
-                   </table>
+                </table>
             </form>
         </div>
         <!-- USER INPUT -->
-        <div id="content">
-            <div id="special">Add Train</div>
-            <form action="">
-                <lable class="title">Train Name:</lable>
-                <input class="box" type="text" id="train-name-input">
+        <div id="container">
+            <div class="row">
+                <div class="tabs_nav navTabs">
+                    <ul class="navTabs_list">
+                        <li class="navTabs_item">
+                            <a href="" class="navTabs_link">Add Train</a>
+                        </li>
+                        <li class="navTabs_item">
+                            <a href="" class="navTabs_link">By Line</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tabs_content">
+                    <div id="addTrainTab">
+                        <div class="group">
+                            <div class="schedule">
+                                <form action="">
+                                    <lable class="title">Train Name:</lable>
+                                    <input class="box" type="text" id="train-name-input">
 
-                <lable class="title">Destination</lable>
-                <input class="box" type="text" id="destination-input">
+                                    <lable class="title">Destination</lable>
+                                    <input class="box" type="text" id="destination-input">
 
-                <lable class="title">Frist Train Time (HH:mm military time)</lable>
-                <input class="box" type="text" id="first-arrival-input">
+                                    <lable class="title">Frist Train Time (HH:mm military time)</lable>
+                                    <input class="box" type="text" id="first-arrival-input">
 
-                <lable class="title">Frequency (min)</lable>
-                <input class="box" type="text" id="frequesncy-input">
-            </form>
-            <button class="btn" id="go">Submit</button>
+                                    <lable class="title">Frequency (min)</lable>
+                                    <input class="box" type="text" id="frequesncy-input">
+                                </form>
+                                <button class="btn" id="go">Get Schedule</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="byLineTab">
+                        <div class="lineFilter">
+                            <a href="">JR Tokyo</a>
+                        </div>
+                        <div class="lineFilter">
+                            <a href="">JR Skyliner</a>
+                        </div>
+                        <div class="lineFilter">
+                            <a href="">NRT Express</a>
+                        </div>
+                        <div class="lineFilter">
+                            <a href="">EX Keiko</a>
+                        </div>
+                        <div class="lineFilter">
+                            <a href="">JR Yamanote</a>
+                        </div>
+                        <div class="lineFilter">
+                            <a href="">Nippon Railway</a>
+                        </div>
+                        <div class="lineFilter">
+                            <a href="">Japan Railway Group</a>
+                        </div>
+                        <div class="lineFilter">
+                            <a href="">Yokohama Line</a>
+                        </div>
+                    </div>
+                </div>
+               
 
+            </div>
         </div>
     </div>
 
