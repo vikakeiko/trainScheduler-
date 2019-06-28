@@ -5,10 +5,10 @@ body {
 }
 
 .container {
-    background: white;
-   /* text-align: center; */
-    padding: 50px auto 20px auto;
+    background: #cfcfcf;
+    padding: 50px auto 50px auto;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 h1 {
@@ -16,25 +16,10 @@ h1 {
      text-align: center;
 }
 
-h4 {
+h3 {
     text-align: center;
     padding: 20px;
 }
 
-#result {
-    background: yellow;
-    padding: 20px;
-}
 
-#newRow {
-    border: 2px solid red;
-    /* display: row; */
-}
 
-.navTabs {
-    background-color: #eee;
-} 
-
-.tabs_nav {
-    border: 1px solid #cfcfcf;
-}
